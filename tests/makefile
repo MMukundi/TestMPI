@@ -22,9 +22,12 @@ BIN = $@
 	$(MPICXX) $(CXXFLAGS) $(OBJ) -o $(BIN) $(LDFLAGS);
 
 check: $(BINS)
-	for bin in $(BINS); do \
-		($(RUNCMD) -np $(NPROCS) ./$$bin 1>/dev/null)|| exit 0;\
+	for bin in $(BINS); do\
+		echo "# >> $$bin";\
+		(($(RUNCMD) -np $(NPROCS) ./$$bin 1>/dev/null)|| exit 0);\
+		echo "# << $$bin"; \
 	done
+
 	
 clean:
 	$(RM) $(BINS) $(OBJS)
