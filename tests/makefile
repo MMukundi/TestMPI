@@ -22,11 +22,8 @@ BIN = $@
 	$(MPICXX) $(CXXFLAGS) $(OBJ) -o $(BIN) $(LDFLAGS);
 
 check: $(BINS)
-	for bin in $(BINS); do\
-		echo "# >> $$bin";\
-		(($(RUNCMD) -np $(NPROCS) ./$$bin)|| exit 0);\
-		echo "# << $$bin"; \
-	done
+	for bin in $(BINS); do echo "# >> $$bin"; echo "(($(RUNCMD) -np $(NPROCS) ./$$bin 1>/dev/null)|| exit 0)"; echo "# << $$bin"; done
+
 
 	
 clean:
