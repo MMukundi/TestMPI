@@ -22,8 +22,7 @@ BIN = $@
 	$(MPICXX) $(CXXFLAGS) $(OBJ) -o $(BIN) $(LDFLAGS);
 
 check: $(BINS)
-	for bin in $(BINS); do echo "# >> $$bin"; $(RUNCMD) -np $(NPROCS) ./$$bin 1>/dev/null ||true; echo "# << $$bin"; done
-
+	for bin in $(BINS); do $(RUNCMD) -np $(NPROCS) ./$$bin 1>/dev/null)|| true; done
 
 	
 clean:
