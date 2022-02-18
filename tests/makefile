@@ -26,6 +26,7 @@ BIN = $@
 	# << $(BIN)
 
 check: $(BINS)
+	echo "$(BINS)"
 
 clean:
 	$(RM) $(BINS) $(OBJS)
