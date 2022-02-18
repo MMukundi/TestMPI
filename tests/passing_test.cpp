@@ -9,11 +9,10 @@ int main()
 	int rank = -1;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
-	if (rank == 0)
-		assert(True());
-
 	MPI_Finalize();
 
-	if (rank == 0)
+	if (rank == 0){
+		assert(True());
 		printf("Pass\n");
+	}
 }
