@@ -19,8 +19,10 @@ OBJ = $(patsubst %$(PRG_SUFFIX),%.o,$@)
 BIN = $@
 
 %$(PRG_SUFFIX) : $(OBJS)
-	$(MPICXX) $(CXXFLAGS) $(OBJ) -o $(BIN) $(LDFLAGS);
-	$(RUNCMD) -np $(NPROCS) ./$(BIN)
+	printf "::group::$(BIN)\n"
+	($(MPICXX) $(CXXFLAGS) $(OBJ) -o $(BIN) $(LDFLAGS)||(printf "\n::end-group::\n"; exit 2));
+	($(RUNCMD) -np $(NPROCS) ./$(BIN)||(printf "\n::end-group::\n";exit 2));
+	printf "\n::end-group::\n"
 
 check: $(BINS)
 
