@@ -21,9 +21,9 @@ BIN = $@
 
 %$(PRG_SUFFIX) : $(OBJS)
 	echo "::group::$(BIN)"
-	($(MPICXX) $(CXXFLAGS) $(OBJ) -o $(BIN) $(LDFLAGS)||(echo "::end-group::"; exit 2));
-	($(RUNCMD) -np $(NPROCS) ./$(BIN)||(echo "::end-group::";exit 2));
-	echo "::end-group::"
+	($(MPICXX) $(CXXFLAGS) $(OBJ) -o $(BIN) $(LDFLAGS)||(echo "::endgroup::"; exit 2));
+	($(RUNCMD) -np $(NPROCS) ./$(BIN)||(echo "::endgroup::";exit 2));
+	echo "::endgroup::"
 
 check: $(BINS)
 	make clean
