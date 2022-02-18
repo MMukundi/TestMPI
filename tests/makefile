@@ -20,10 +20,9 @@ BIN = $@
 
 %$(PRG_SUFFIX) : $(OBJS)
 	$(MPICXX) $(CXXFLAGS) $(OBJ) -o $(BIN) $(LDFLAGS);
+	$(RUNCMD) -np $(NPROCS) ./$(BIN)
 
 check: $(BINS)
-	for bin in $(BINS); do $(RUNCMD) -np $(NPROCS) ./$$bin 1>/dev/null|| true; done
 
-	
 clean:
 	$(RM) $(BINS) $(OBJS)
