@@ -13,10 +13,8 @@ int main()
 	if (rank == 0)
 	{
 		assert(False());
+		printf("Pass\n");
 	}
 
 	MPI_Finalize();
-
-	if (rank == 0)
-		printf("Pass\n");
 }
