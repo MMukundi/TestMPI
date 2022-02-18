@@ -23,9 +23,7 @@ BIN = $@
 
 check: $(BINS)
 	for bin in $(BINS); do \
-		# >> ./$$bin
 		($(RUNCMD) -np $(NPROCS) ./$$bin 1>/dev/null)|| exit 0;
-		# << ./$$bin
 	done
 	
 clean:
