@@ -3,7 +3,7 @@
 
 bool False()
 {
-	return false;
+	return true;
 }
 
 bool True()
