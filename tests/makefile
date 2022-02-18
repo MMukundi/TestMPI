@@ -21,12 +21,12 @@ BIN = $@
 %$(PRG_SUFFIX) : $(OBJS)
 	$(MPICXX) $(CXXFLAGS) $(OBJ) -o $(BIN) $(LDFLAGS);
 
-	# >> $(BIN)
-	($(RUNCMD) -np $(NPROCS) ./$(BIN) 1>/dev/null)|| exit 0;
-	# << $(BIN)
-
 check: $(BINS)
-	echo "$(BINS)"
-
+	for bin in $(BINS); do \
+		# >> ./$$bin
+		($(RUNCMD) -np $(NPROCS) ./$$bin 1>/dev/null)|| exit 0;
+		# << ./$$bin
+	done
+	
 clean:
 	$(RM) $(BINS) $(OBJS)
