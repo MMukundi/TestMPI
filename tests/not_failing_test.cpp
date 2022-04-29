@@ -14,7 +14,7 @@ int main()
 
 	if (rank == 0)
 	{
-		assert(!False());
+		assert(False());
 		printf("Pass\n");
 	}
 
